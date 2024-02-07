@@ -5,20 +5,21 @@ import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 
 const ListaDeTarefas = () => {
-  const { tarefas } = useSelector((state: RootReducer) => state)
+  const { itens } = useSelector((state: RootReducer) => state.tarefas)
 
   return (
     <S.Container>
       <p>
         2 tarefas marcadas como: &quot;categoria&ldquo; e &quot;termo&ldquo;
         <ul>
-          {tarefas.map((item) => (
-            <li key={item.titulo}>
+          {itens.map((item) => (
+            <li key={item.id}>
               <Tarefa
                 descricao={item.descricao}
                 prioridade={item.prioridade}
                 status={item.status}
                 titulo={item.titulo}
+                id={item.id}
               />
             </li>
           ))}
